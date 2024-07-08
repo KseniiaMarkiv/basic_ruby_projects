@@ -12,15 +12,15 @@ def caesar_cipher(string, shift_factor)
     return "A letters was not entered."
   end
 
-  encrypted_string = string.chars.map do |char|
-    is_uppercase = char == char.upcase
+  encrypted_string = string.chars.map do |letter|
+    is_uppercase = letter == letter.upcase
     alphabet = is_uppercase ? ('A'..'Z').to_a : ('a'..'z').to_a
 
-    if alphabet.include?(char)
-      new_index = (alphabet.index(char) + shift_factor) % 26
+    if alphabet.include?(letter)
+      new_index = (alphabet.index(letter) + shift_factor) % 26
       alphabet[new_index]
     else
-      char
+      letter
     end
   end
 
