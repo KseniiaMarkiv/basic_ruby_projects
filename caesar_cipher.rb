@@ -1,6 +1,17 @@
-#! MORE UNDERSTANDABLE - but iterate all alphabet
+# ! MORE UNDERSTANDABLE - but iterate all alphabet
+print "Provide, please, a string: "
+string = gets.chomp
+print "Provide, please, a shift cipher: "
+shift_factor = gets.chomp.to_i
 
 def caesar_cipher(string, shift_factor)
+  unless shift_factor.is_a? Numeric
+    return "A shift cipher was not entered."
+  end
+  unless string.is_a? String
+    return "A letters was not entered."
+  end
+
   encrypted_string = string.chars.map do |char|
     is_uppercase = char == char.upcase
     alphabet = is_uppercase ? ('A'..'Z').to_a : ('a'..'z').to_a
@@ -13,14 +24,13 @@ def caesar_cipher(string, shift_factor)
     end
   end
 
-  encrypted_string.join
+  p encrypted_string.join
 end
 
-puts caesar_cipher("What a string!", 5) # => "Bmfy f xywnsl!"
+caesar_cipher(string, shift_factor)
 
 
-
-#! MORE EFFICIENT for optimization
+# ! MORE EFFICIENT for optimization
 
 def shifted(string, shift_amount)
   encrypted_string = string.split('').map do |letter|
@@ -35,4 +45,4 @@ def shifted(string, shift_amount)
   encrypted_string.join
 end
 
-shifted("What a string!", 5)  # => "Bmfy f xywnsl!"
+p shifted("What a string!", 5)  # => "Bmfy f xywnsl!"
