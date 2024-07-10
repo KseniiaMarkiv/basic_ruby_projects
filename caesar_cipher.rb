@@ -1,16 +1,15 @@
+# frozen_string_literal: true
+
 # ! MORE UNDERSTANDABLE - but iterate all alphabet
-print "Provide, please, a string: "
+
+print 'Provide, please, a string: '
 string = gets.chomp
-print "Provide, please, a shift cipher: "
+print 'Provide, please, a shift cipher: '
 shift_factor = gets.chomp.to_i
 
 def caesar_cipher(string, shift_factor)
-  unless shift_factor.is_a? Numeric
-    return "A shift cipher was not entered."
-  end
-  unless string.is_a? String
-    return "A letters was not entered."
-  end
+  return 'A shift cipher was not entered.' unless shift_factor.is_a? Numeric
+  return 'A letters was not entered.' unless string.is_a? String
 
   encrypted_string = string.chars.map do |letter|
     is_uppercase = letter == letter.upcase
@@ -37,7 +36,7 @@ def shifted(string, shift_amount)
     if letter =~ /[A-Za-z]/
       is_uppercase = letter == letter.upcase
       base = is_uppercase ? 'A'.ord : 'a'.ord
-      new_letter = ((letter.ord - base + shift_amount) % 26 + base).chr
+      ((letter.ord - base + shift_amount) % 26 + base).chr
     else
       letter
     end
@@ -45,4 +44,4 @@ def shifted(string, shift_amount)
   encrypted_string.join
 end
 
-p shifted("What a string!", 5)  # => "Bmfy f xywnsl!"
+p shifted('What a string!', 5) # => "Bmfy f xywnsl!"
